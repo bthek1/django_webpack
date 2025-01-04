@@ -5,6 +5,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
+    path("todo/", include("todo.urls")),  # Include the todo app's URLs
     path("", include("pages.urls")),
 ]
 

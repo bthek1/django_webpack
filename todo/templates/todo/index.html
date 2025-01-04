@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ul id="todo-list"></ul>
+    <input type="text" id="todo-input" placeholder="Add a new task" />
+    <button onclick="addTodo()">Add</button>
+
+    <script>
+        const fetchTodos = async () => {
+            const response = await fetch("/todo/api/todos/");
+            const todos = await response.json();
+            const todoList = document.getElementById("todo-list");
+            todoList.innerHTML = todos.map(todo => `
+                <li>${todo.title} (${todo.completed ? "Completed" : "Pending"})</li>
+            `).join("");
+        };
+
+        const addTodo = async () => {
+            const input = document.getElementById("todo-input");
+            const title = input.value.trim();
+            if (!title) return;
+
+            // Add logic for posting new todos if required (not implemented here)
+            console.log(`Adding new todo: ${title}`);
+
+            input.value = "";  // Clear input
+            await fetchTodos();  // Refresh list
+        };
+
+        // Initial fetch
+        fetchTodos();
+    </script>
+    <script src="{% static 'dist/bundle.js' %}"></script>
+</body>
+</html>
