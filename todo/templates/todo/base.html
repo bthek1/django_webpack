@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <title>{% block title %}To-Do App{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'todo/css/styles.css' %}">
+    </head>
+<body>
+    <header>
+        <h1>{% block header %}To-Do App{% endblock %}</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{% static 'todo/js/main.js' %}"></script>
+</body>
+</html>

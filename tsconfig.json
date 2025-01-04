@@ -7,5 +7,5 @@
       "rootDir": "./frontend",
       "moduleResolution": "node"
   },
-  "include": ["frontend/**/*"]
+  "include": ["frontend/**/*", "frontend/index.ts"]
 }

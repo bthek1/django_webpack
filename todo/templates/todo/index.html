@@ -1,65 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">To-Do List</h1>
-        
-        <div class="input-group mb-3">
-            <input 
-                type="text" 
-                id="todo-input" 
-                class="form-control" 
-                placeholder="Add a new task" 
-                aria-label="Add a new task"
-            />
-            <button class="btn btn-primary" onclick="addTodo()">Add</button>
-        </div>
+{% extends "todo/base.html" %}
 
-        <ul id="todo-list" class="list-group">
-            <!-- To-Do items will be appended here -->
-        </ul>
+{% block title %}To-Do List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-3">
+        <input id="new-todo" type="text" class="form-control" placeholder="Enter a new task" />
+        <button id="add-todo" class="btn btn-primary mt-2">Add</button>
     </div>
-    
-    <!-- Custom JS -->
-    <script>
-        const fetchTodos = async () => {
-            const response = await fetch("/todo/api/todos/");
-            const todos = await response.json();
-            const todoList = document.getElementById("todo-list");
-            todoList.innerHTML = todos.map(todo => `
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>${todo.title}</span>
-                    <span class="badge bg-${todo.completed ? 'success' : 'warning'}">
-                        ${todo.completed ? "Completed" : "Pending"}
-                    </span>
-                </li>
-            `).join("");
-        };
-
-        const addTodo = async () => {
-            const input = document.getElementById("todo-input");
-            const title = input.value.trim();
-            if (!title) return;
-
-            // Add logic for posting new todos if required (not implemented here)
-            console.log(`Adding new todo: ${title}`);
-
-            input.value = "";  // Clear input
-            await fetchTodos();  // Refresh list
-        };
-
-        // Initial fetch
-        fetchTodos();
-    </script>
-</body>
-</html>
+    <ul id="todo-list" class="list-group"></ul>
+</div>
+{% endblock %}

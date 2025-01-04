@@ -1,45 +1,35 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: 'development', // or 'production'
-    entry: './frontend/index.ts', // Main TypeScript file
+    entry: "./frontend/index.ts",
     output: {
-        path: path.resolve(__dirname, 'static/dist'), // Output for bundled files
-        filename: 'bundle.js',
-        clean: true, // Clean old files
+        path: path.resolve(__dirname, "todo/static/todo"),
+        filename: "js/main.js",
+        clean: true,
+    },
+    resolve: {
+        extensions: [".ts", ".js"],
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader',
+                use: "ts-loader",
                 exclude: /node_modules/,
             },
             {
                 test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                ],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
         ],
     },
-    resolve: {
-        extensions: ['.ts', '.js'],
-    },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './frontend/index.html',
-        }),
         new MiniCssExtractPlugin({
-            filename: 'styles.css',
+            filename: "css/styles.css",
         }),
     ],
-    devServer: {
-        static: './static/dist',
-        hot: true,
-    },
+    mode: "development",
 };
