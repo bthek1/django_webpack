@@ -59,3 +59,7 @@ rm-migrations: debug_wrap ## Delete all migrations
 	rm **/migrations/0*.py
 	rm */*/migrations/0*.py
 	echo Deleted all migrations. Run 'make migrate' to recreate them.
+
+
+show_urls: ## Show all URLs
+	python manage.py show_urls
