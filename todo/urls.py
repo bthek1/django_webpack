@@ -8,7 +8,7 @@ router.register(r'todos', TodoViewSet, basename='todo')
 
 
 urlpatterns = [
-    path("api", include(router.urls)),  # Include router-generated URLs
+    path("api/", include(router.urls)),  # Include router-generated URLs
     path("", index, name="todo-index"),         # Main To-Do page
-    path("list", todo_list, name="todo-list"),  # API endpoint for To-Do items
+    path("list", todo_list, name="todo-lists"),  # API endpoint for To-Do items
 ]

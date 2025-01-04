@@ -5,7 +5,7 @@
     // Format python files with ruff
     "[python]": {
       "editor.formatOnSave": true,
-      "editor.defaultFormatter": "charliermarsh.ruff",
+      "editor.defaultFormatter": "ms-python.black-formatter",
       "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit",
         "source.fixAll.ruff": "explicit"

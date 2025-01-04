@@ -35,7 +35,7 @@ test: ## Run tests
 flush: debug_wrap ## Flush the database (delete all data!) 
 	@if [ -z "$(DEBUG)" ]; then python manage.py flush; else python manage.py flush --noinput; fi
   
-
+reset: debug_wrap flush migrate superuser ## Reset the database (delete all data and recreate it)
 	
 
 clean:		## Remove pycache, tmp files and test db, mail, etc
