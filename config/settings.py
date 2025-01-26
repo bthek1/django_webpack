@@ -162,7 +162,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "core"/"static"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # https://whitenoise.readthedocs.io/en/latest/django.html
 STORAGES = {

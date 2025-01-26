@@ -1,0 +1,24 @@
+{
+  "name": "django_webpack",
+  "version": "1.0.0",
+  "description": "> A batteries-included Django starter project. To learn more visit [LearnDjango.com](https://learndjango.com).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bthek1/django_webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bthek1/django_webpack/issues"
+  },
+  "homepage": "https://github.com/bthek1/django_webpack#readme",
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
